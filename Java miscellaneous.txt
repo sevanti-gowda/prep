@@ -1,0 +1,127 @@
+this keyword:
+It is used to get variables or methods which belong to class.
+Ex:
+public class Square {	
+	
+	private Integer length;
+	
+	public Integer getLength() {
+		return length;
+	}
+	
+	public void setLength(Integer length) {
+		if(length>=0)
+			this.length = length;
+	}
+	
+	public void setLength100(Integer length) {
+		int x = 5;
+		this.length = 100;
+		getLength();
+		setLength(50);
+	}
+	
+}
+
+In the setLength() method if we dont use this keyword then length=length will not change the value of the variable length which is present in the class.
+By using the this keyword in setLength() method this.length = length we are assigning the length which is coming as parameter to the variable length which is present in the class.
+
+static keyword:
+If a variable or method declared as static, they belong to the class rather than instance of the class.
+Ex:
+public class CiGusta {
+	
+	public static Integer time;
+	
+	public Integer timePersonal;
+ 
+}
+
+//initial time
+		CiGusta.time = 130;
+		
+		CiGusta vivek = new CiGusta();
+		vivek.timePersonal = 131;
+		
+		CiGusta sevanti = new CiGusta();
+		sevanti.timePersonal = 132;
+		
+		CiGusta.time = 133;
+		vivek.time=136;
+		sevanti.time = 140;
+		
+		System.out.println("Vivek personal time : " +vivek.timePersonal);
+		System.out.println("Vivek cigusta time : " +vivek.time);
+		System.out.println("Sev Personal time : " +sevanti.timePersonal);
+		System.out.println("Sev CiGusta time : " +sevanti.time);
+		System.out.println("ciGusta time : "+CiGusta.time);
+
+In the above example changing the variable time by 
+1. CiGusta.time or
+2. vivek.time or
+3. sevanti.time
+Will change the value of the variable time for CiGusta class, vivek object and sevanti object
+because the variable time is static
+
+----super keyword-----
+It is used to access parent class's methods, constructor and variable from child class.
+Accessing super class methods from child class:- super.circumference(side)
+Accessing super class variable from child class:- super.name
+We can access parent class constructor only from child class constructor.
+We can call parent constructor only in the first line of child class constructor.
+super();
+
+----final keyword----
+final variable - cannot be changed
+final variable can be modified in constructor, 
+if a list(or similar thing) is final we cannot assign the list a new instance but we can add items to it 
+List is an object ( reference variable ) so reference is not modifiable but the object's state is modifiable
+
+public final List<String> strLIst = new ArrayList<>();
+	public final Integer num = 12;	
+	public final CiGusta ciGusta= new CiGusta();
+	
+	public void circumference(int side) {
+          // Below 3 are errors
+		num = 21;
+		strLIst = new ArrayList<>();
+		ciGusta = new CiGusta();
+		
+	//Valid
+	ciGusta.time=12;
+		strLIst.add("Sevanti");
+		strLIst.remove(0);
+		
+	}
+ 
+---String-----
+String: creates a new String in String Pool. if another string is created with same value, both will point to the same memory location.
+String s = "sev";
+System.out.println(System.identityHashCode(s)); // address = x
+		
+s=s+"flower";		
+System.out.println(s+" : "+System.identityHashCode(s)); // address = y
+String s2 = "sev";
+System.out.println(System.identityHashCode(s2)); // address = x
+
+new String : immutable -> if changed creates a new object for the new string. old value stays in the memory without any reference to access again. is thread safe.
+StringBuffer -> doesnt create a new object everytime it is changed but modifies string in the same memory location. is thread safe.
+
+String Builder -> doesnt create a new Object everytime it is modified but modifies string in the same memory location. is not thread safe
+                String s ="Sevanti";		
+		String s2 = "Sevanti";		
+		System.out.println(s == s2); // true
+		
+		String s3 = new String("Sevanti");
+		String s4 = new String("Sevanti");		
+		
+		System.out.println(s3 == s4); // false
+		System.out.println(s3.equals(s4)); //true
+		
+		StringBuilder sb = new StringBuilder("Vivek");
+		sb = new StringBuilder("Sev");
+		sb.append("Flower");
+
+
+
+ 
