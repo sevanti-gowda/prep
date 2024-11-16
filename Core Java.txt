@@ -1,0 +1,89 @@
+Access Modifiers---
+public: accessible everywhere.
+private: accessible within the same class.
+default: accessible within the same package.
+protected: accessible within the same package and subclasses.
+
+Inheritance----
+Multiple inheritance is not allowed bcoz,
+If there are multiple parent classes those classes might have methods with same name and different implementation and 
+This might create confusion (ambiguity) for the child class that is the child class would not know the method from which class to implement.
+
+Abstraction-----------
+Abstract class can have abstract methods and non abstract methods.
+It can also have zero abstract methods and also all the methods can be abstract.
+abstract methods cannot  be private.Bcoz if they are private they cannot be implemented by child classes.
+Non abstract classes can be public, private or anything.
+Child classes which extends the abstract classes should definitely implement the abstract methods present in the abstract class.
+Abstract class can have class level variables which can be public, private or anything.
+We cannot do multiple inheritance with abstract class.
+
+Interface-----
+Interface can have only unimplemented methods.
+All the methods of the interface are public.
+Interfaces are introduced to support multiple inheritance.Coz interfaces have unimplemented methods , 
+and if 2 interfaces are implemented by a single class(Multiple inheritance) the child class wont have any ambiguity coz 
+even if both interfaces have same methods with same name the methods dont have any method definition or method body 
+for the child class to be confused on to which method body to implement.
+
+
+Polymorphism---
+Method overloading:
+Methods with same names and different number of parameters or different type of parameters
+It is called as compile-time polymorphism.
+public int circumference(int radius) {
+			return (2*22*radius)/7;
+		}
+		
+		public int circumference(int length, int breadth) {
+			return 2*(length + breadth);
+		}
+		
+		public int circumference(String sideLength) {
+			return 4*(Integer.valueOf(sideLength));
+		}
+
+//The below method is not allowed coz it has same type of parameters and same number of parameters and 
+differing it only in the return type of method wont come under method overloading.
+		
+		public String circumference(String sideLength) {
+			return String.valueOf(5*(Integer.valueOf(sideLength)));
+		}
+
+
+Method overriding:
+It is called as run-time polymorphism.
+
+Ex:
+public class Shape {	
+	public void circumference(int radius) {
+		System.out.println( (2*22*radius)/7);
+	}	
+	public void myDetails() {
+		System.out.println("Im a shape");
+	}
+}
+public class Square extends Shape{		
+	public void circumference(int radius) {
+		System.out.println( (5*22*radius)/7);
+	}
+	public void myDetails() {
+		System.out.println("Im a Square");
+	}
+}
+  	 
+
+Overriding parent's class method in the child class is called method overriding.
+When u call the overriden method on child class object,
+Square sq=new Square();
+sq.circumference(20);
+The compiler will figure out whether sq.circumference(20) is calling parent class(shape) circumference method or 
+child class(square) circumference method at runtime.that is why it is called run-time polymorphism.
+
+
+
+
+
+
+
+ 
