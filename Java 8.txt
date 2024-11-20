@@ -1,0 +1,43 @@
+Functional interface---------
+
+package com.testa;
+ 
+@FunctionalInterface
+public interface CiGusta {
+	
+	void order(String topping, Boolean extraCheese);
+ 
+}
+
+public class TestMain {	
+ 
+	public static void main(String[] args) {	
+		
+		TestMain tm = new TestMain();
+		tm.orderItems();
+	}	
+	
+	//waiter takes the order
+	public void orderItems() {
+		// pasta
+		orderPizza( (x,y)->System.out.println("toppings are : "+ x +"  is extra cheese needed? : " + y) );
+	}
+	
+	//internal processing
+	public void orderPizza( CiGusta cg ) {
+		cg.order(" jalapeno & bellpepper & paneer ", true);
+	} 	
+	
+		
+}
+
+//(x,y)->System.out.println("toppings are : "+ x +"  is extra cheese needed? : " + y) is the lambda function
+//where the text before -> which is (x,y) are the params of the method
+// the text after -> is the method body
+
+Lamda function: it is an anonymous function which can send method as an input parameter to other methods.
+it can be sent as an input parameter to other methods which takes functional interface as input parameters.
+The method body of the lamda function will become the body of abstract function in the functional interface.
+
+ 
+
