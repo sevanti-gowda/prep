@@ -1,0 +1,105 @@
+List-----------
+Diff btwn Array and List:
+Array: It is a collection of elements of same datatype which is fixed in size.
+List: It is a collection of elements of same datatype which is dynamic in size.
+
+List<String> strList = new ArrayList<>();
+		strList.add("Sev");
+		strList.add("Vivek");
+
+		strList.remove("Vivek");
+		
+		strList.get(0);
+		
+		strList.set(0, "Buffalo");
+		
+		System.out.println(strList);
+
+ArrayList: It is an implementation of the list interface.
+SingleLinkedList:It is a collection of node where each node has address to the next node and the last node has address as null
+DoublyLinkedList: It is a collection of node where each node has address to the previous node and next node and the last node has address as null
+CircularLinkedList:It is a collection of node where each node has address to the next node and the last node has address of first node.
+
+The variable holding the above linked lists will have address to head node(first node).
+
+Map:
+Hashmap----------
+When you create a hashmap an array will be created(internally) and each index of this array has a linkedList with single empty node is present.
+When you add key, value pair to the map, hashcode will be generated for the key ,
+and an index will be generated for that hashcode and key, value pair will be stored in the empty node of the LinkedList present in that index in the array.
+HashCollision:-If another key produces same hashcode or index then this new key, value pair will be stored in the second node of the linkedList in that same index.
+If number of nodes exceeds 8 for that index then LinkedList will be replaced by Binary Search Tree.
+
+We need to override hashcode and equals method for the key object if we have created the key object.
+Ex: String and Integer are given by default by Java. If Str, Int etc are used as key we dont have to do anything.
+    If an emp object which we created by ourselves is being used as key then hashcode and equals methods will be overridden in the emp class.
+
+To remove a particular key , value pair or to get a key in the map we again generate a hashcode and index and,
+get or remove from that index.
+
+
+public class Restaurant {
+	private String name;
+ 
+	public String getName() {
+		return name;
+	}
+ 
+	public void setName(String name) {
+		this.name = name;
+	}
+ 
+	public Restaurant(String name) {
+		super();
+		this.name = name;
+	}
+ 
+	@Override
+	public int hashCode() {
+		return Objects.hash(name);
+	}
+ 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Restaurant other = (Restaurant) obj;
+		return Objects.equals(name, other.name);
+	}	
+	
+}
+
+Map<Restaurant, String> map = new HashMap<>();
+		
+		Restaurant r1 = new Restaurant("CiGusta");
+		map.put(r1, "B999");
+		Restaurant r2 = new Restaurant("Bisi-Bisi");
+		map.put(r2, "B102");
+		Restaurant r3 = new Restaurant("StarBucks");
+		map.put(r3, "B102");
+		Restaurant r4 = new Restaurant("Bisi-Bisi");
+		map.put(r4, "B102");
+		
+		System.out.println(map);
+
+If hashcode and equals are not present in the object class which is taken as key for the map r2 and r4 which have the same key will be added without getting updated.
+
+Set:
+When u create a hashset it uses hashmap internally.
+When u add an element to the set that element becomes key and random constant becomes value to the hashmap.
+If we want to create a set  of an emp object then the emp obj class should have hashcode and equals methods overridden in them.
+
+Set<Restaurant> rSet = new HashSet<>();
+		rSet.add(r4);
+		rSet.add(r3);
+		rSet.add(r2);
+		rSet.add(r1);
+		
+		System.out.println(rSet);
+
+If hashcode and equals are not present in the object class which is taken as element for the set r2 and r4 which are similar objects(they have the same Restaurant Name) will be added without getting updated.
+ 
