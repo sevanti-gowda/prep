@@ -45,7 +45,49 @@ Static methods in FI are utility methods which are used to have some utility fun
 
 When there are multiple classes implementing a FI,
 If we want a particular implementation only in few classes out of all those implementing classes (Seasonal collection only in a few locations of ZARA)
-then default methods will be helpful inachieving this. 
+then default methods will be helpful inachieving this.
+Default methods can be overridden but they need not be overridden.
+
+@FunctionalInterface
+public interface Zara {
+	
+	void usualCollection();
+	
+	default void seasonalCollection() {
+		//design
+	}
+	
+	static String printBill() {
+		return " Bill ";
+	}
+ 
+}
+ 
+ 
+public class ZaraMadhapur  implements Zara {
+ 
+	//Mall
+	@Override
+	public void usualCollection() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+ 
+}
+
+public class ZaraHitechCity implements Zara{
+ 
+	//Big Zara Outlet
+	@Override
+	public void usualCollection() {
+		// TODO Auto-generated method stub
+		
+	}
+ 
+}
+  
 
 
  
