@@ -1,4 +1,5 @@
 Functional interface---------
+An interface that contains exactly one interface and can have any number of static, default methods.
 
 package com.testa;
  
@@ -36,8 +37,16 @@ public class TestMain {
 // the text after -> is the method body
 
 Lamda function: it is an anonymous function which can send method as an input parameter to other methods.
-it can be sent as an input parameter to other methods which takes functional interface as input parameters.
+Relation btw functional interface and lamda function:lamda function can be sent as an input parameter to other methods which takes functional interface as input parameters.
 The method body of the lamda function will become the body of abstract function in the functional interface.
+
+Uses of static and default methods in FI:
+Static methods in FI are utility methods which are used to have some utility functionality like printing a bill.
+
+When there are multiple classes implementing a FI,
+If we want a particular implementation only in few classes out of all those implementing classes (Seasonal collection only in a few locations of ZARA)
+then default methods will be helpful inachieving this. 
+
 
  
 
