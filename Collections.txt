@@ -88,6 +88,8 @@ Map<Restaurant, String> map = new HashMap<>();
 
 If hashcode and equals are not present in the object class which is taken as key for the map r2 and r4 which have the same key will be added without getting updated.
 
+Hashmap is unordered, LinkedHashMap is ordered, treeMap is sorted implementaion of Map.
+
 Set:
 When u create a hashset it uses hashmap internally.
 When u add an element to the set that element becomes key and random constant becomes value to the hashmap.
@@ -102,4 +104,64 @@ Set<Restaurant> rSet = new HashSet<>();
 		System.out.println(rSet);
 
 If hashcode and equals are not present in the object class which is taken as element for the set r2 and r4 which are similar objects(they have the same Restaurant Name) will be added without getting updated.
+
+Hashset is unordered, LinkedHashSet is ordered, treeSet is sorted implementaion of Set.
+
+
+Stream API:
+public class TestMain{	
  
+	public static void main(String[] args) {
+		
+		Saiyan vegeta = new Saiyan();
+		vegeta.setName("Vegeta");
+		vegeta.setIsSuperSaiyanBlue(true);
+		
+		Saiyan goku = new Saiyan();
+		goku.setName("Goku");
+		goku.setIsSuperSaiyanBlue(true);
+		
+		Saiyan gohan = new Saiyan();
+		gohan.setName("Gohan");
+		gohan.setIsSuperSaiyanBlue(false);
+		
+		
+		List<Saiyan> saiyans = List.of(vegeta,goku,gohan);
+		
+		List<String> ssb = saiyans	//List of saiyans
+							.stream() //List of saiyans converted to Stream of Saiyans
+							.filter(s -> s.getIsSuperSaiyanBlue()==true) //Few of the Saiyans are Filtered from Stream
+							.map(s -> s.getName()) //Stream of Saiyans converted to Stream of Names which is Stream of String   
+							.collect(Collectors.toList()); // Stream of String is converted to List of String
+		
+		System.out.println(ssb);
+		
+	}
+ 
+}
+ 
+class Saiyan{
+	private String name;
+	private Boolean isSuperSaiyanBlue;
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public Boolean getIsSuperSaiyanBlue() {
+		return isSuperSaiyanBlue;
+	}
+	public void setIsSuperSaiyanBlue(Boolean isSuperSaiyanBlue) {
+		this.isSuperSaiyanBlue = isSuperSaiyanBlue;
+	}
+	
+}
+
+.map converts stream of one datatype to stream of different datatype.
+
+
+
+
+
