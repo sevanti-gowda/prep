@@ -43,10 +43,14 @@ The method body of the lamda function will become the body of abstract function 
 Uses of static and default methods in FI:
 Static methods in FI are utility methods which are used to have some utility functionality like printing a bill.
 
+Default method is method which is present in a FI and it has some method body.
+Default method can be overridden in the classes implementing FI.But it need not be.
+
 When there are multiple classes implementing a FI,
 If we want a particular implementation only in few classes out of all those implementing classes (Seasonal collection only in a few locations of ZARA)
-then default methods will be helpful inachieving this.
+then default methods will be helpful in achieving this.
 Default methods can be overridden but they need not be overridden.
+
 
 @FunctionalInterface
 public interface Zara {
@@ -88,6 +92,7 @@ public class ZaraHitechCity implements Zara{
  
 }
   
+
 
 
  
